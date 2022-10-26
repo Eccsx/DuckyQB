@@ -24,10 +24,8 @@ def create():
 
 def update():
     DISPLAYSURF.fill((30, 30, 30))
-
     level.blit()
     CHARACTER.blit()
 
     pygame.display.flip()
-
     time.sleep(TIMESLEEP)

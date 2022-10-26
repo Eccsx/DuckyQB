@@ -11,13 +11,20 @@ class Ducky:
         "LEFT": pygame.image.load("player_left.png").convert_alpha(),
     }
 
+    def update(func):
+        def inner(self):
+            func(self)
+            env.update()
+
+        return inner
+
+    @update
     def __init__(self):
         self.i, self.j = env.LEVEL["start_position"]
         self.facing = self.DIRECTIONS["UP"]
         self.sprite = self.SPRITES["UP"]
 
         env.CHARACTER = self
-        env.update()
 
     def blit(self):
         cart_x = self.j * env.TILEWIDTH_HALF
@@ -29,6 +36,7 @@ class Ducky:
 
         env.DISPLAYSURF.blit(self.sprite, (x, y))
 
+    @update
     def go_forward(self):
         if self.facing == self.DIRECTIONS["UP"]:
             self.i -= 1
@@ -39,18 +47,14 @@ class Ducky:
         if self.facing == self.DIRECTIONS["LEFT"]:
             self.j -= 1
 
-        env.update()
-
+    @update
     def turn_right(self):
         next_direction = list(self.DIRECTIONS.keys())[(self.facing + 1) % 4]
         self.facing = self.DIRECTIONS.get(next_direction)
         self.sprite = self.SPRITES.get(next_direction)
 
-        env.update()
-
+    @update
     def turn_left(self):
         next_direction = list(self.DIRECTIONS.keys())[(self.facing - 1) % 4]
         self.facing = self.DIRECTIONS.get(next_direction)
         self.sprite = self.SPRITES.get(next_direction)
-
-        env.update()
