@@ -1,5 +1,5 @@
 import pygame
-from duckyqb import env
+from duckyqb import env, utils
 
 
 class Ducky:
@@ -27,25 +27,20 @@ class Ducky:
         env.CHARACTER = self
 
     def blit(self):
-        cart_x = self.j * env.TILEWIDTH_HALF
-        cart_y = self.i * env.TILEHEIGHT_HALF
-        iso_x = cart_x - cart_y
-        iso_y = (cart_x + cart_y) / 2
-        x = env.DISPLAYSURF.get_rect().centerx + iso_x
-        y = env.DISPLAYSURF.get_rect().centery / 2 + iso_y
+        iso_x, iso_y = utils.cartesian_to_isometric(self.i, self.j)
 
-        env.DISPLAYSURF.blit(self.sprite, (x, y))
+        env.DISPLAYSURF.blit(self.sprite, (iso_x, iso_y))
 
     @update
     def go_forward(self):
         if self.facing == self.DIRECTIONS["UP"]:
-            self.i -= 1
-        if self.facing == self.DIRECTIONS["RIGHT"]:
-            self.j += 1
-        if self.facing == self.DIRECTIONS["DOWN"]:
-            self.i += 1
-        if self.facing == self.DIRECTIONS["LEFT"]:
             self.j -= 1
+        if self.facing == self.DIRECTIONS["RIGHT"]:
+            self.i += 1
+        if self.facing == self.DIRECTIONS["DOWN"]:
+            self.j += 1
+        if self.facing == self.DIRECTIONS["LEFT"]:
+            self.i -= 1
 
     @update
     def turn_right(self):

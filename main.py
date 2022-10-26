@@ -6,10 +6,13 @@ if __name__ == "__main__":
     ducky = character.Ducky()
 
     # HELP DUCKY HERE #
-    ducky.turn_right()
     ducky.go_forward()
     ducky.turn_right()
     ducky.go_forward()
+    ducky.go_forward()
+    ducky.turn_right()
+    ducky.go_forward()
+    ducky.turn_left()
     ducky.go_forward()
     # END #
 
