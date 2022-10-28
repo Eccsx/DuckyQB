@@ -1,21 +1,24 @@
 from duckyqb import env, utils
+import os
+import json
+import pygame
 
 
-def load():
-    map_data = [
-        [1, 1, 1],
-        [1, 0, 1],
-        [1, 1, 1],
-    ]
+def load(level_id):
+    with open(os.path.join(env.TILEPATH, "tile_index.json"), "r") as f:
+        for data in json.load(f):
+            env.TILES.append(
+                pygame.image.load(data["filename"]).convert_alpha()
+            )
 
-    env.LEVEL["map"] = map_data
-    env.LEVEL["start_position"] = (0, 0)
+    with open(os.path.join(env.LEVELPATH, level_id + ".json"), "r") as f:
+        env.LEVEL = json.load(f)
 
 
 def blit():
-    for j, row in enumerate(env.LEVEL["map"]):
+    for j, row in enumerate(env.LEVEL["tiles"]):
         for i, tile in enumerate(row):
-            tile_image = env.WALL if tile == 1 else env.GRASS
+            tile_image = env.TILES[tile]
 
             iso_x, iso_y = utils.cartesian_to_isometric(i, j)
 

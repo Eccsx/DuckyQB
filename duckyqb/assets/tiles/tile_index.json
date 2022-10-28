@@ -1,0 +1,10 @@
+[
+    {
+        "id": 0,
+        "filename": "duckyqb/assets/tiles/grass.png"
+    },
+    {
+        "id": 1,
+        "filename": "duckyqb/assets/tiles/wall.png"
+    }
+]

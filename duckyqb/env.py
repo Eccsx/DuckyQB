@@ -3,19 +3,21 @@ import pygame
 from duckyqb import level
 
 
-DISPLAYSURF = pygame.display.set_mode((640, 480), pygame.DOUBLEBUF)
+DISPLAYSURF = pygame.display.set_mode((800, 600), pygame.DOUBLEBUF)
 
-LEVELWIDTH, LEVELHEIGHT = 3, 3
-
-TILEWIDTH, TILEHEIGHT = 64, 33
+LEVELWIDTH, LEVELHEIGHT = 11, 11
+TILEWIDTH, TILEHEIGHT = 64, 32
 
 TIMESLEEP = 0.5
 
-CHARACTER = None
-LEVEL = {"map": [], "start_position": (0, 0)}
+LEVELPATH = "duckyqb/assets/levels"
+TILEPATH = "duckyqb/assets/tiles"
+CHARACTERPATH = "duckyqb/assets/characters"
 
-WALL = pygame.image.load("wall.png").convert_alpha()
-GRASS = pygame.image.load("grass.png").convert_alpha()
+CHARACTER = None
+LEVEL = None
+
+TILES = []
 
 
 def create():
@@ -24,7 +26,7 @@ def create():
 
 
 def update():
-    DISPLAYSURF.fill((30, 30, 30))
+    DISPLAYSURF.fill((60, 71, 75))
     level.blit()
     CHARACTER.blit()
 

@@ -5,10 +5,18 @@ from duckyqb import env, utils
 class Ducky:
     DIRECTIONS = {"UP": 0, "RIGHT": 1, "DOWN": 2, "LEFT": 3}
     SPRITES = {
-        "UP": pygame.image.load("player_up.png").convert_alpha(),
-        "RIGHT": pygame.image.load("player_right.png").convert_alpha(),
-        "DOWN": pygame.image.load("player_down.png").convert_alpha(),
-        "LEFT": pygame.image.load("player_left.png").convert_alpha(),
+        "UP": pygame.image.load(
+            "duckyqb/assets/characters/player_up.png"
+        ).convert_alpha(),
+        "RIGHT": pygame.image.load(
+            "duckyqb/assets/characters/player_right.png"
+        ).convert_alpha(),
+        "DOWN": pygame.image.load(
+            "duckyqb/assets/characters/player_down.png"
+        ).convert_alpha(),
+        "LEFT": pygame.image.load(
+            "duckyqb/assets/characters/player_left.png"
+        ).convert_alpha(),
     }
 
     def update(func):
@@ -20,7 +28,7 @@ class Ducky:
 
     @update
     def __init__(self):
-        self.i, self.j = env.LEVEL["start_position"]
+        self.i, self.j = env.LEVEL["start"]
         self.facing = self.DIRECTIONS["UP"]
         self.sprite = self.SPRITES["UP"]
 
