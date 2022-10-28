@@ -41,6 +41,7 @@
 	- [ ] The final trial
 - [ ] Tiles design
 - [ ] Wiki
+- [ ] Unit tests
 
 <p align="right"><a href="#top"><i>back to top</i></a></p>
 
@@ -48,7 +49,7 @@
 
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the MIT License. See `LICENSE` for more information.
 
 <p align="right"><a href="#top"><i>back to top</i></a></p>
 
